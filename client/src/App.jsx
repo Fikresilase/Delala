@@ -5,7 +5,8 @@ import Indexpage from "./pages/indexpage";
 import Login from "./pages/loginpage";
 import Layout from "./layout";
 import Register from "./pages/register";
-
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3000/";
 // Import any additional components you want to route to
 // (e.g., import AboutPage from './pages/AboutPage';)
 
@@ -14,8 +15,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/login" element={<Login/>} />
-          <Route path="/Register" element={<Register/>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
           <Route index element={<Indexpage />} />
           {/* Add more routes as needed */}
           {/* Example for an About Page: */}

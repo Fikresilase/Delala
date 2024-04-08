@@ -6,12 +6,13 @@ function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   function RegisterUser(ev) {
     ev.preventDefault();
-    axios.get("http://localhost3000/");
-  }
-
+    axios.post('/register', {
+      name,
+      email,
+      password,
+    })}
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="p-6 rounded-lg w-full max-w-md">
@@ -25,7 +26,8 @@ function Register() {
           placeholder="Enter your nmae"
           required
           value={name}
-          onChange={ev=>setName(ev.target.value)}
+          onChange={(ev) => setName(ev.target.value)}
+          onSubmit={RegisterUser}
         />
         <input
           type="email"
@@ -35,7 +37,7 @@ function Register() {
           placeholder="Enter your email"
           required
           value={email}
-          onChange={ev=>setEmail(ev.target.value)}
+          onChange={(ev) => setEmail(ev.target.value)}
         />
         <input
           type="password"
@@ -45,11 +47,11 @@ function Register() {
           placeholder="Enter your password"
           required
           value={password}
-          onChange={ev=>setPassword(ev.target.value)}
+          onChange={(ev) => setPassword(ev.target.value)}
         />
         <button
+          onSubmit={RegisterUser}
           type="submit"
-          onClick={RegisterUser}
           className="w-full bg-red-500 text-white font-semibold px-4 py-2 rounded-full mb-4 hover:bg-red-500 focus:outline-none focus:bg-red-600"
         >
           Register
